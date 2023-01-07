@@ -19,6 +19,7 @@ const BeğenBölümü = (props) => {
         </div>
         <div className="like-section-wrapper">
           <FontAwesomeIcon icon={faComment} />
+          {/* onClick={openInput} */}
         </div>
       </div>
       <p className="like-number">{begeniSayisi} likes</p>

@@ -11,6 +11,7 @@ const Yorumlar = (props) => {
       {yorumlar.map((item) => (
         <Yorum yorum={item} />
       ))}
+      <input type="text" placeholder="Yorum Ekle" />
     </div>
   );
 };

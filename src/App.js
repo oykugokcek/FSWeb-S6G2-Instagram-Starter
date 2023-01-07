@@ -13,6 +13,7 @@ import "./App.css";
 import Gönderiler from "./bileşenler/Gönderiler/Gönderiler";
 import AramaÇubuğu from "./bileşenler/AramaÇubuğu/AramaÇubuğu.js";
 import sahteVeri from "./sahte-veri";
+import { faSearchengin } from "@fortawesome/free-brands-svg-icons";
 
 const App = () => {
   const [gönderiler, setGönderiler] = useState(sahteVeri);
@@ -21,6 +22,12 @@ const App = () => {
   // Gönderi nesneleri dizisini tutmak için "gonderiler" adlı bir state oluşturun, **sahteVeri'yi yükleyin**.
   // Artık sahteVeri'ye ihtiyacınız olmayacak.
   // Arama çubuğunun çalışması için , arama kriterini tutacak başka bir state'e ihtiyacımız olacak.
+  const arananItems = (search) => {
+    const filterArr = sahteVeri.filter((item) => {
+      return item.username.toLowerCase().includes(search.toLowerCase());
+    });
+    setGönderiler(filterArr);
+  };
 
   const gonderiyiBegen = (gonderiID) => {
     /*
@@ -38,6 +45,9 @@ const App = () => {
       })
     );
 
+    function openInput() {
+      // Yorumların içindeki inputu nasıl çağırırım?
+    }
     /*
 	  "setGonderi" yi çağırın ve state ine "posts.map" çağrısını iletin.
       `map` içine iletilen callback aşağıdaki mantığı gerçekleştirir:
@@ -48,7 +58,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <AramaÇubuğu />
+      <AramaÇubuğu arananItems={arananItems} />
       <Gönderiler gonderiler={gönderiler} gonderiyiBegen={gonderiyiBegen} />
       {/* AramaÇubuğu ve Gönderiler'i render etmesi için buraya ekleyin */}
       {/* Her bileşenin hangi proplara ihtiyaç duyduğunu kontrol edin, eğer ihtiyaç varsa ekleyin! */}
